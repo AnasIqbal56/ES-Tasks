@@ -196,9 +196,394 @@ function multiplynumebr(a, b) {
 console.log(`The product of 5 and 98 is ${multiplynumebr(5, 98)}.`);
 
 // Write a simple tag function that takes a template string and logs it.
-// ● Use this tag function with a template literal.
+// Use this tag function with a template literal.
 
 function Tagfun(string) {
     console.log(string);
     return string;
 }
+Tagfun`Hello Anas here`;
+
+
+// Write a tag function that formats a string by making it uppercase.
+//  ● Use this tag function with a template literal and log the result
+// Tag function that makes the string uppercase
+function toUpperCaseTag(strings, ...values) {
+  let result = "";
+
+  for (let i = 0; i < strings.length; i++) {
+    result += strings[i];          
+    if (i < values.length) {
+      result += values[i];         
+    }
+  }
+
+  return result.toUpperCase();
+}
+
+const city = "Karachi";
+const temp = 32;
+
+const answer = toUpperCaseTag`Today in ${city}, the temperature is ${temp}°C.`;
+
+console.log(answer);
+
+
+//  Create a variable for the current hour.
+//  Use a template literal to display a different message depending on 
+// whether it's morning (before 12 PM) or afternoon (after 12 PM)
+
+
+let currentHr = new Date().getHours();
+let timeMsg = `Good ${currentHr < 12 ? "morning" : "afternoon"}!`;
+console.log(timeMsg);
+
+//  ● Create an array of items (e.g., a shopping list).
+//  ● Use a template literal to generate an HTML list (<ul> and <li> 
+// elements) from the array and log it to the console.
+
+let shoppingList = ["Rice","Oil", "Eggs", "Bread", "Butter","Jello","Jam","Milkshake"];
+let htmlLst = `<ul>
+${shoppingList.map(item => `<li>${item}</li>`).join('')}
+</ul>`;
+console.log(htmlLst);
+
+// Create a string that includes a backtick character using a template 
+// literal.
+//  ● Log the string to the console.
+
+let bacStr = `This is the way of using backticks \``;
+console.log(bacStr);
+
+
+// Create a variable age.
+//  ● Use the ternary operator to assign a variable canVote the value 
+// "Yes" if age is 18 or older, and "No" otherwise.
+//  ● Log canVote to the console
+
+let age = 20;
+let canVote = age >= 18 ? "Yes" : "No";
+console.log(canVote);
+
+// Create a variable number.
+//  ● Use the ternary operator to assign a variable evenOrOdd the value 
+// "Even" if number is even, and "Odd" if it's odd.
+//  ● Log evenOrOdd to the console.
+
+let number = 7;
+let evenOrOdd = number % 2 === 0 ? "Even" : "Odd";
+console.log(evenOrOdd);
+
+// Create a variable score.
+//  Use the ternary operator to assign a variable grade based on the following conditions:
+//  ● "A" if score is 90 or above.
+//  ● "B" if score is 80 or above.
+//  ● "C" if score is 70 or above.
+//  ● "D" if score is 60 or above.
+//  ● "F" otherwise.
+//  Log grade to the console.
+
+let score = 87;
+let grade = score >= 90 ? "A+" :
+score >= 80 ? "A" :
+        score >= 70 ? "B" :
+            score >= 60 ? "C" :
+            score>=50 ? "D": "F";
+console.log(grade);
+
+// ● Create a variable isLoggedIn.
+//  ● Use the ternary operator and logical operators to assign a variable 
+// statusMessage the value "Welcome back!" if isLoggedIn is true, 
+// and "Please log in" if isLoggedIn is false.
+//  ● Log statusMessage to the console
+
+let isLoggedIn = false;
+let statusMessage = isLoggedIn ? "Welcome back user!" : "Please log in";
+console.log(statusMessage);
+
+// Create variables isMember and purchaseAmount.
+//  ● Use the ternary operator and logical operators to assign a variable 
+// discount the value 10% of purchaseAmount if isMember is true 
+// and purchaseAmount is greater than 100, and 0 otherwise.
+//  ● Log discount to the console.
+
+let isMember = true;
+let purchaseAmount = 150;
+let discount = isMember && purchaseAmount > 100 ? purchaseAmount * (10/100) : 0;
+console.log(discount);
+
+//  Create a function maxValue(a, b) that returns the larger of the two 
+// numbers using the ternary operator.
+//  ● Call the function with two numbers and log the result.
+function maxValue(a, b) {
+    return a > b ? a : b;
+}
+console.log(maxValue(39, 282));
+
+//  Create a function greet(name) that returns a greeting message. If 
+// name is not provided (or is an empty string), it should return "Hello, 
+// guest!", otherwise, it should return "Hello, [name]!".
+//  ● Call the function with and without a name and log the result.
+
+function greet(name) {
+    return name ? `Hello, ${name}!` : "Hello, guest!";
+}
+console.log(greet("Anas"));
+console.log(greet(""));
+
+
+//  Create an array of numbers.
+//  ● Use the map method with a ternary operator to create a new array 
+// where each number is doubled if it is even and tripled if it is odd.
+//  ● Log the new array to the console.
+
+let arrofnumb = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+let newarr = arrofnumb.map(i => i%2 ===0 ? i*2 :i*3);
+console.log(newarr);
+
+//  Create an array of strings.
+//  ● Use the filter method with a ternary operator to create a new 
+// array that only includes strings longer than 3.
+//  ● Log the new array to the console.
+
+let arrOfStr = ["Anas", "Iqbal", "is", "a", "good", "software", "engineer"];
+let filteredArr = arrOfStr.filter(str => str.length > 3 ? true : false);
+console.log(filteredArr);
+
+// Create an array originalArray with some elements.
+//  ● Use the spread operator to create a copy of originalArray called 
+// copiedArray.
+//  ● Log both arrays to the console to verify they are the same but not the 
+// same reference
+let originalArray = [1, 2, 3, 4, 5];
+let copiedArray = [...originalArray];
+console.log(originalArray);
+console.log(copiedArray);
+console.log(originalArray === copiedArray); 
+
+// Create two arrays array1 and array2.
+//  ● Use the spread operator to create a new array mergedArray that 
+// combines the elements of array1 and array2.
+//  ● Log mergedArray to the console.
+
+let array1 = [11, 12, 23];
+let array2 = [94, 54, 26];
+let mergedArray = [...array1, ...array2];
+console.log(mergedArray);
+
+
+//  Create an array numbers with some elements.
+//  ● Use the spread operator to add a new element at the beginning and at 
+// the end of the numbers array.
+//  ● Log the updated array to the console
+
+let numbers = [3, 6, 9];
+numbers = [4, ...numbers, 12];
+console.log(numbers);
+
+
+// Create an object originalObject with some key-value pairs.
+//  ● Use the spread operator to create a copy of originalObject called 
+// copiedObject.
+//  ● Log both objects to the console to verify they are the same but not the 
+// same reference
+let originalObject = { name: "Anas", age: 20 };
+let copiedObject = { ...originalObject };
+console.log(originalObject);
+console.log(copiedObject);
+console.log(originalObject === copiedObject);
+
+//  Create an object user with properties name, age, and email.
+//  ● Use the spread operator to create a new object updatedUser that 
+// updates the email property and adds a new address property.
+//  ● Log the updatedUser object to the console
+
+let user = { name: "Anas", age: 20, email: "anus.f.111@gmail.com" };
+let updatedUser = { ...user, email: "updatedemail@gmail.com",address:"Block H North Nazimabad"};
+console.log(updatedUser);
+
+//  Create a function sum(a, b, c) that returns the sum of three 
+// numbers.
+//  ● Create an array numbers with three elements.
+//  ● Use the spread operator to pass the elements of numbers as 
+// arguments to the sum function.
+//  ● Log the result to the console
+
+function sumof3(a, b, c) {
+    return a + b + c;
+}
+let numbrs = [5, 13, 15];
+console.log(sumof3(...numbrs));
+
+// Create a function combineArrays that takes any number of arrays 
+// as arguments and returns a single array containing all elements.
+//  ● Use the spread operator inside the function to combine the arrays.
+//  ● Call the function with multiple arrays and log the result.
+
+function combineArrays(...arrays) {
+    return arrays.flat();
+}
+let combinedarr = combineArrays([1, 2], [3, 4], [5, 6]);
+console.log(combinedarr);
+
+//  Create a function multiply that takes a number and any number of 
+// additional arguments.
+//  ● Use the rest parameter to gather the additional arguments into an 
+// array and multiply each by the first argument.
+//  ● Return an array of the results.
+//  ● Call the function with appropriate arguments and log the result
+function multiply(firstno, ...numbers) {
+    return numbers.map(j => j*firstno);
+}
+console.log(multiply(2, 3, 4, 5));
+
+
+//  Create a nested array nestedArray and use the spread operator to 
+// create a shallow copy.
+//  ● Modify the inner arrays in the copied array.
+//  ● Log both the original and copied arrays to observe the effect of 
+// shallow copying
+
+let nestedArray = [[19, 22], [63, 84],78];
+let shallowCopy = [...nestedArray];
+shallowCopy[0][1] = 99; 
+shallowCopy[2] = 100;
+console.log("Original Array:", nestedArray); 
+console.log("Shallow Copy:", shallowCopy);
+
+// Create a function sum that uses the rest operator to take any number 
+// of arguments.
+//  ● The function should return the sum of all its arguments.
+//  ● Call the function with different numbers of arguments and log the 
+// results.
+
+function sum(...args) {
+    return args.reduce((acc, val) => acc + val, 0);
+}
+console.log(sum(1, 9, 3));
+console.log(sum(10, 2, 0,6, 99));
+console.log(sum(5, 65));
+
+// Create a function average that uses the rest operator to take any 
+// number of arguments.
+//  ● The function should return the average of all its arguments.
+//  ● Call the function with different numbers of arguments and log the 
+// results
+function average(...args) {
+    let total = args.reduce((acc, val) => acc + val, 0);
+    return args.length ? total / args.length : 0;
+}
+console.log(average(99,76,88,45));
+
+console.log(average(10,20));
+console.log(average(5));
+
+// ● Create an array numbers with at least 5 elements.
+//  ● Use array destructuring with the rest operator to assign the first 
+// element to a variable first and the remaining elements to a variable 
+// rest.
+//  ● Log first and rest to the console
+
+let numbersarr = [98, 45, 63, 80, 87];
+let [first, ...rest] = numbersarr;
+console.log(first); 
+console.log(rest);
+
+// Create an array colors with at least 5 elements.
+//  ● Use array destructuring with the rest operator to skip the first two 
+// elements and assign the remaining elements to a variable 
+// remainingColors.
+//  ● Log remainingColors to the console
+
+let colors = ["offwhite", "peach", "crimson red","indigo", "Yellow", "violet"];
+let [, , ...remainingColors] = colors;
+console.log(remainingColors);
+
+// ● Create an object person with properties name, age, email, and 
+// address.
+//  ● Use object destructuring with the rest operator to assign name and 
+// email to individual variables, and the remaining properties to a 
+// variable rest.
+//  ● Log the variables to the console
+
+let persoobj = { nameof: "Anas", age: 20, email: "anus.f.111@gmail.com", address: "Block H North Nazimabad" };
+let { nameof, email, ...restProps } = persoobj;
+console.log(nameof); 
+console.log(email); 
+console.log(restProps);
+
+// Create an object student with properties id, name, grades, and 
+// info (where info is another object with properties age and major).
+//  ● Use nested destructuring with the rest operator to extract id, name, 
+// and major to individual variables, and the remaining properties to a 
+// variable rest.
+//  ● Log the variables to the console
+
+let astudent = { id: 101, sname: "Anas Iqbal", grades: [90, 85, 88], info: { age: 20, major: "Computer Science" } };
+let { id, sname, info: { major }, ...restStudent } = astudent;
+console.log(id);
+console.log(sname);
+console.log(major);
+console.log(restStudent);
+
+//  Create a function filterEven that uses the rest operator to take any 
+// number of arguments.
+//  ● The function should return a new array containing only the even 
+// numbers.
+//  ● Call the function with different numbers of arguments and log the 
+// results
+
+function filterEven(...args) {
+    return args.filter(num => num % 2 === 0);
+}
+console.log(filterEven(1, 2, 3, 4, 5, 6));
+console.log(filterEven(10, 15, 20, 25, 30));
+console.log(filterEven(7, 9, 11));
+
+// ● Create a function combineAndSort that uses the rest operator to 
+// take any number of arrays.
+//  ● The function should combine all the arrays into one and return the 
+// sorted result.
+//  ● Call the function with different arrays and log the results.
+
+
+function combineAndSort(...arrays) {
+    return arrays.flat().sort((a, b) => a - b);
+}
+console.log(combineAndSort([5, 2, 9], [1, 6, 3], [8, 4, 7]));
+console.log(combineAndSort([10, 20], [15, 5], [30, 25]));
+console.log(combineAndSort([3, 1], [4, 2], [6, 5]));
+
+// Create an array fruits with the elements "apple", "banana", and 
+// "cherry".
+//  ● Use destructuring to assign the first element to a variable 
+// firstFruit, the second to secondFruit, and the third to 
+// thirdFruit.
+//  ● Log the variables to the console.
+
+let fruits = ["apple", "banana", "cherry"];
+let [firstFruit, secondFruit, thirdFruit] = fruits;
+console.log(firstFruit); 
+console.log(secondFruit); 
+console.log(thirdFruit);
+
+//  Create an array colors with the elements "red", "green", "blue", 
+// "yellow".
+//  ● Use destructuring to assign the first element to primaryColor and 
+// the third element to tertiaryColor.
+//  ● Log the variables to the console
+
+let colorsarr = ["red", "green", "blue", "yellow"];
+let [primaryColor, , tertiaryColor] = colorsarr;
+console.log(primaryColor); 
+console.log(tertiaryColor);
+
+// Create an array numbers with the elements 1 through 5.
+//  ● Use destructuring to assign the first element to firstNumber and 
+// the rest of the elements to remainingNumbers.
+//  ● Log the variables to the console
+
+let numbersarray = [1, 2, 3, 4, 5];
+let [firstNumber, ...remainingNumbers] = numbersarray;
+console.log(firstNumber); 
+console.log(remainingNumbers);
