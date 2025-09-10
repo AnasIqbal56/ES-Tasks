@@ -587,3 +587,252 @@ let numbersarray = [1, 2, 3, 4, 5];
 let [firstNumber, ...remainingNumbers] = numbersarray;
 console.log(firstNumber); 
 console.log(remainingNumbers);
+
+
+// Create an object person with properties name, age, and city.
+//  ● Use destructuring to assign the properties to variables name, age, 
+// and city.
+//  ● Log the variables to the console
+
+let person = { pname: "Anas", p_age: 20, p_city: "Karachi" };
+let { pname, p_age, p_city } = person;
+console.log(pname); 
+console.log(p_age); 
+console.log(p_city);
+
+// Create an object car with properties make, model, and year.
+//  ● Use destructuring to assign the properties to variables carMake, 
+// carModel, and carYear.
+//  ● Log the variables to the console
+let car = { make: "Toyota", model: "Supra", year: 2022 };
+let { make: carMake, model: carModel, year: carYear } = car;
+console.log(carMake); 
+console.log(carModel); 
+console.log(carYear);
+
+// Create an object settings with properties theme and language.
+//  ● Use destructuring to assign the properties to variables theme and 
+// language, and provide a default value of "English" for language.
+//  ● Log the variables to the console
+
+let settings = { theme: "Black" };
+let { theme, language = "English" } = settings;
+console.log(theme); 
+console.log(language);
+
+//  Create an array nestedArray with the elements [1, 2], [3, 4], 
+// and [5, 6].
+//  ● Use nested destructuring to assign the first elements of each 
+// sub-array to variables a, b, and c.
+//  ● Log the variables to the console
+
+let nestedArray2 = [[1, 2], [3, 4], [5, 6]];
+let [[a], [b], [c]] = nestedArray2;
+console.log(a); 
+console.log(b); 
+console.log(c);
+
+// Create an object profile with properties username, details 
+// (which is another object with properties email and address).
+//  ● Use nested destructuring to assign username, email, and address 
+// to variables.
+//  ● Log the variables to the console.
+
+let profile = { username: "AnasIqbal", details: { useemail: "anus.f.111@gmail.com", address: "Block H North Nazimabad" } };
+let { username, details: { useemail, address } } = profile;
+console.log(username); 
+console.log(email); 
+console.log(address);
+
+// Create an object data with properties id, info (which is an array 
+// with elements {name: "Alice"} and {age: 25}).
+//  ● Use nested destructuring to assign id, name, and age to variables.
+//  ● Log the variables to the console.
+
+let data = { id: 1, info: [{ a_name: "Alice" }, { per_age: 25 }] };
+let { ids, info: [{ a_name }, { per_age }] } = data;
+console.log(ids); 
+console.log(a_name); 
+console.log(age);
+
+//  Create a function printCoordinates that takes an array [x, y] 
+// as a parameter.
+//  ● Use destructuring in the function parameter to extract x and y.
+//  ● Log x and y inside the function.
+//  ● Call the function with different coordinates.
+
+function printCoordinates([x, y]) {
+    console.log(`X: ${x}`);
+    console.log(`Y: ${y}`);
+    
+}
+printCoordinates([19, 20]);
+printCoordinates([51, 15]);
+printCoordinates([10, 0]);
+
+// Create a function displayUser that takes an object {name, age} 
+// as a parameter.
+//  ● Use destructuring in the function parameter to extract name and age.
+//  ● Log name and age inside the function.
+//  ● Call the function with different user objects
+
+function displayUser({ name, age }) {
+    console.log(`Name: ${name}`);
+    console.log(`Age: ${age}`);
+}
+displayUser({ name: "Anas", age: 20 });
+displayUser({  age: 19,name: "Ali" });
+
+//  Create an object book with properties title, author, and year.
+//  ● Use Object.keys() to get an array of the property names of the 
+// book object.
+//  ● Log the array to the console.
+let book = { title: "Fire and Blood", author: "George R.R. Martin", year: 2018 };
+let bookKey_s = Object.keys(book);
+console.log(bookKey_s);
+
+// Create an object student with properties name, age, grade, and 
+// school.
+//  ● Use Object.keys() to get an array of the property names and 
+// determine the number of properties in the student object.
+//  ● Log the number of properties to the console
+let student = { name: "Anas Iqbal", age: 20, grade: "A", school: "Jawan Pakistan" };
+let studentKeys = Object.keys(student);
+console.log(studentKeys.length);
+
+//  Create an object product with properties name, price, and category.
+//  Use Object.keys() to get an array of the property names and iterate 
+// over this array to log each property name and its corresponding value
+
+let product = { name: "School bag", price: 2500, category: "Stationery" };
+let productKeys = Object.keys(product);
+productKeys.forEach(key => {
+    console.log(`${key}: ${product[key]}`);
+});
+
+
+// Create an object movie with properties title, director, year, 
+// and genre.
+//  ● Use Object.values() to get an array of the property values of the 
+// movie object.
+//  ● Log the array to the console
+
+let movie = { title:"Jojo's Rabbit", director: "Taika Waititi", year: 2019, genre: "Comedy-Drama" };
+let moviealues = Object.values(movie);
+console.log(moviealues);
+
+
+// Create an object scores with properties math, science, and 
+// english, each with numeric values.
+//  ● Use Object.values() to get an array of the property values and 
+// calculate the total sum of the values.
+//  ● Log the sum to the console
+let scores = { math: 90, science: 85, english: 88 };
+let scoreValues = Object.values(scores);
+let totaL = scoreValues.reduce((a, b) => a + b, 0);
+console.log(totaL);
+
+// Create an object user with properties username, email, and 
+// location.
+//  ● Use Object.values() to get an array of the property values and 
+// iterate over this array to log each value
+let userobj = { username: "AnasIqbal", email: "anus.f.111@gmail.com", location: "Karachi" };
+let userVaL = Object.values(userobj);
+userVaL.forEach(value => {
+    console.log(value);
+});
+
+
+//  Create an object car with properties make, model, and year.
+//  ● Use Object.entries() to get an array of the key-value pairs of the 
+// car object.
+//  ● Log the array to the console.
+
+let carobj = { make: "Toyota", model: "Supra", year: 2022 };
+let carEntries = Object.entries(carobj);
+console.log(carEntries);
+
+//  Create an object person with properties firstName, lastName, 
+// and age.
+//  ● Use Object.entries() to convert the person object into an array 
+// of key-value pairs.
+//  ● Log the array to the console
+
+let personobj = { first_Name: "Anas", last_Name: "Iqbal", age: 20 };
+let personEntes = Object.entries(personobj);
+console.log(personEntes);
+
+
+//  Create an object settings with properties theme, 
+// notifications, and privacy.
+//  ● Use Object.entries() to get an array of the key-value pairs and 
+// iterate over this array to log each key and value
+
+let settingsobj = { theme: "Dark", notifications: true, privacy: "High" };
+let settingsEnt = Object.entries(settingsobj);
+settingsEnt.forEach(([key, value]) => {
+    console.log(`${key}: ${value}`);
+});
+
+//  Create an object inventory with properties apples, bananas, 
+// oranges, and grapes, each with numeric values.
+//  ● Use Object.keys() and filter() to get an array of keys where 
+// the value is greater than 10.
+//  ● Log the array to the console
+
+let inventory = { apples: 15, bananas: 8, oranges: 12, grapes: 5 };
+let filteredKeys = Object.keys(inventory).filter(key => inventory[key] > 10);
+console.log(filteredKeys);
+
+// Create an object temperatures with properties morning, 
+// afternoon, and evening, each with numeric values.
+//  ● Use Object.entries() to get an array of key-value pairs, then use 
+// map() to convert the temperatures from Celsius to Fahrenheit.
+//  ● Convert the transformed array back to an object.
+//  ● Log the new object to the console
+
+let temperatures = { morning: 20, afternoon: 30, evening: 25 };
+let farenheitTempes = Object.fromEntries(
+    Object.entries(temperatures).map(([key, value]) => [key, (value * 9/5) + 32])
+);
+console.log(farenheitTempes);
+
+// Create an object roles with properties admin, editor, and 
+// viewer, each with string values.
+//  ● Use Object.entries() to get an array of key-value pairs, then use 
+// map() to swap the keys and values.
+//  ● Convert the transformed array back to an object.
+//  ● Log the new object to the console.
+let roles = {admin:"Anas", editor:"Ali", viewer:"Sawera"};
+let swappedRoles = Object.fromEntries(
+    Object.entries(roles).map(([key, value]) => [value, key])
+);
+console.log(swappedRoles);
+
+// Create an array numbers with values from 1 to 10.
+//  ● Write a higher-order function filterAndMap that takes an array, a 
+// filter function, and a map function.
+//  ● Use this function to filter out even numbers and then square the 
+// remaining numbers.
+//  ● Log the resulting array to the console
+let anarrofnums = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+function filterAndMap(array, filterFn, mapFn) {
+    return array.filter(filterFn).map(mapFn);
+}
+let result = filterAndMap(anarrofnums, n => n % 2 !== 0, nu=> nu * nu);
+console.log(result);
+
+//  Create an array words with the values "apple", "banana", "cherry", 
+// "date".
+//  ● Write a higher-order function sortAndReduce that takes an array, a 
+// sort function, and a reduce function.
+//  ● Use this function to sort the words alphabetically and then 
+// concatenate them into a single string.
+//  ● Log the resulting string to the console
+
+let words = ["apple", "banana", "cherry", "date"];
+function sortAndReduce(array, sortFn, reduceFn, initialValue) {
+    return array.sort(sortFn).reduce(reduceFn, initialValue);
+}   
+let concatenatedString = sortAndReduce(words, (a, b) => a.localeCompare(b), (acc, word) => acc + word, "");
+console.log(concatenatedString);
