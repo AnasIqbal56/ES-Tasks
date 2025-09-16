@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Marksheet</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      background: #f0f2f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .box {
+      background: #ffffff;
+      width: 100%;
+      max-width: 500px;
+      border-radius: 16px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+      padding: 30px;
+    }
+    h1 {
+      text-align: center;
+      color: #222;
+      margin-bottom: 25px;
+    }
+    label {
+      font-weight: 600;
+      color: #444;
+      margin-top: 15px;
+      display: block;
+    }
+    input {
+      width: 100%;
+      padding: 12px;
+      margin-top: 8px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      font-size: 14px;
+      background: #fafafa;
+      transition: 0.3s;
+    }
+    input:focus {
+      border-color: #2a9d8f;
+      background: #fff;
+      outline: none;
+      box-shadow: 0 0 6px rgba(42,157,143,0.4);
+    }
+    button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 10px;
+      background: #2a9d8f;
+      color: #fff;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    button:hover {
+      background: #21867a;
+    }
+    .card {
+      margin-top: 25px;
+      padding: 20px;
+      border-radius: 12px;
+      border: 1px solid #ddd;
+      background: #fafafa;
+      animation: fadeIn 0.8s ease;
+    }
+    .card h2 {
+      text-align: center;
+      color: #2a9d8f;
+      margin-bottom: 15px;
+    }
+    table {
+      width: 100%;
+      margin-top: 15px;
+      border-collapse: collapse;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: center;
+      font-size: 14px;
+    }
+    th {
+      background: #2a9d8f;
+      color: white;
+    }
+    .status {
+      font-weight: bold;
+      margin-top: 10px;
+      text-align: center;
+      padding: 8px;
+      border-radius: 6px;
+    }
+    .pass {
+      background: #d4f8e8;
+      color: #1b5e20;
+    }
+    .fail {
+      background: #ffebee;
+      color: #c62828;
+    }
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(15px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h1>Student Marksheet</h1>
+    <label for="studentName">Name:</label>
+    <input type="text" id="studentName" placeholder="Enter name">
+    <label for="rollNo">Roll No:</label>
+    <input type="text" id="rollNo" placeholder="Enter roll number">
+    <button id="generateBtn">Generate</button>
+    <div id="output"></div>
+  </div>
+
+  <script>
+    const students = [
+      { roll: "101", name: "Ali", marks: { Math: 85, Science: 78, English: 90, Computer: 88, History: 72 } },
+      { roll: "102", name: "Sara", marks: { Math: 75, Science: 82, English: 70, Computer: 65, History: 80 } },
+      { roll: "103", name: "Ahmed", marks: { Math: 95, Science: 89, English: 92, Computer: 94, History: 88 } },
+      { roll: "104", name: "Ayesha", marks: { Math: 60, Science: 65, English: 70, Computer: 72, History: 68 } },
+      { roll: "105", name: "Hamza", marks: { Math: 82, Science: 77, English: 85, Computer: 80, History: 74 } },
+      { roll: "106", name: "Fatima", marks: { Math: 91, Science: 95, English: 89, Computer: 90, History: 92 } },
+      { roll: "107", name: "Usman", marks: { Math: 55, Science: 60, English: 58, Computer: 62, History: 59 } },
+      { roll: "108", name: "Hina", marks: { Math: 78, Science: 72, English: 85, Computer: 88, History: 80 } },
+      { roll: "109", name: "Zain", marks: { Math: 68, Science: 70, English: 65, Computer: 72, History: 60 } },
+      { roll: "110", name: "Mariam", marks: { Math: 88, Science: 84, English: 90, Computer: 85, History: 87 } }
+    ];
+
+    const gradeCalc = p => p >= 90 ? "A+" : p >= 80 ? "A" : p >= 70 ? "B" : p >= 60 ? "C" : "F";
+
+    document.querySelector("#generateBtn").addEventListener("click", () => {
+      const nameInput = document.querySelector("#studentName").value.trim().toLowerCase();
+      const rollInput = document.querySelector("#rollNo").value.trim();
+      const student = students.find(s => s.roll === rollInput || s.name.toLowerCase() === nameInput);
+
+      if (!student || !rollInput) {
+        document.querySelector("#output").innerHTML = `<p style="color:red;text-align:center;">❌ Student not found</p>`;
+        return;
+      }
+
+      const { name, roll, marks } = student;
+      const total = Object.values(marks).reduce((a, b) => a + b, 0);
+      const percentage = (total / Object.keys(marks).length).toFixed(2);
+      const grade = gradeCalc(percentage);
+      const isPass = Object.values(marks).every(m => m >= 40);
+      const status = isPass ? `<p class="status pass">✅ Pass</p>` : `<p class="status fail">❌ Fail</p>`;
+
+      let rows = "";
+      for (const [sub, mark] of Object.entries(marks)) {
+        rows += `<tr><td>${sub}</td><td>${mark}</td></tr>`;
+      }
+
+      document.querySelector("#output").innerHTML = `
+        <div class="card">
+          <h2>Marksheet</h2>
+          <p><strong>Name:</strong> ${name}</p>
+          <p><strong>Roll:</strong> ${roll}</p>
+          <table>
+            <tr><th>Subject</th><th>Marks</th></tr>
+            ${rows}
+          </table>
+          <p><strong>Total:</strong> ${total}</p>
+          <p><strong>Percentage:</strong> ${percentage}%</p>
+          <p><strong>Grade:</strong> ${grade}</p>
+          ${status}
+        </div>
+      `;
+    });
+  </script>
+</body>
+</html>
